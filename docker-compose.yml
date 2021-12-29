@@ -1,11 +1,12 @@
 version: '2'
 services:
-  web:
-    build: .
-    ports:
-      - '5000:5000'
-    logging:
-      options:
-        max-size: '128m'
-        max-file: '2'
-    restart: always
+ web:
+   build: .
+   command: pipenv run python src/server.py --min_interval 300
+   ports:
+     - '80:5000'
+   logging:
+     options:
+       max-size: '128m'
+       max-file: '2'
+   restart: always
